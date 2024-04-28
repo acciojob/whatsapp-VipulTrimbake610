@@ -24,7 +24,7 @@ public class WhatsappRepository {
     private HashMap<String,String> userMap = new HashMap<>();
     private HashMap<Group, List<User>> groupUserMap = new HashMap<>();
     private HashMap<Group, List<Message>> groupMessageMap = new HashMap<>();
-    private HashSet<String> messageSet = new HashSet<>();
+    private HashSet<Message> messageSet = new HashSet<>();
     private int customGroupCount = 1;
     private int messageId = 0;
 
@@ -62,7 +62,9 @@ public class WhatsappRepository {
     public int createMessage(String content){
         // The 'i^th' created message has message id 'i'.
         // Return the message id.
-        messageSet.add(content);
+        Message m = new Message();
+        m.setContent(content);
+        messageSet.add(m);
         messageId++;
         return messageId;
     }
