@@ -82,7 +82,14 @@ public class WhatsappRepository {
         //Throw "Group does not exist" if the mentioned group does not exist
         //Throw "You are not allowed to send message" if the sender is not a member of the group
 
-        if(groupUserMap.containsKey(group.getName())){
+        Group g = new Group();
+            for(Group x : groupUserMap.keySet()){
+                if(x.getName().equals(group.getName())){
+                    g = x;
+
+                }
+            }
+        if(groupUserMap.containsKey(g)){
             boolean flag = false;
             for(User user : groupUserMap.get(getGroupByName(group.getName()))){
                 if(user.getName().equals(sender.getName())) {
